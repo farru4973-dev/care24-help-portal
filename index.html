@@ -3,109 +3,364 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Care24.help | Customer Support</title>
-<meta name="description" content="Independent customer support request portal.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Care24.help | Customer Support Portal</title>
+<meta name="description" content="Care24.help independent multi-platform support request portal.">
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#f3f6fc;color:#17243a;font-family:Arial,sans-serif}
-header{background:#102b50;color:white;padding:18px}
-.nav,main{max-width:1050px;margin:auto}
-.brand{font-size:26px;font-weight:bold}
-.brand span{color:#54d6b0}
-.hero{margin:24px auto;padding:35px 20px;border-radius:18px;background:linear-gradient(135deg,#102b50,#1767d2);color:white;text-align:center}
-.hero h1{font-size:30px;margin:0 0 12px}
-.hero p{line-height:1.7;margin:0 auto;max-width:650px;color:#e0ebff}
-main{padding:0 16px}
-h2{font-size:24px;margin:30px 0 8px}
-.sub{color:#718096;line-height:1.6;margin-bottom:20px}
-.games{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
-.card{background:white;border:1px solid #e0e7f0;border-radius:15px;padding:20px 12px;text-align:center;box-shadow:0 4px 15px #17243a0c}
-.logo{height:85px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
-.logo span{display:block;width:100%;max-width:190px;padding:18px 5px;border-radius:12px;font-weight:900;font-size:clamp(17px,4vw,25px);overflow-wrap:anywhere}
-.crore{background:#fff5d9;color:#a66d00;border:2px solid #e9c56b}
-.rabet{background:#eaf4ff;color:#1467c5;border:2px solid #9bc9fa}
-.pari{background:#f0ebff;color:#6536ad;border:2px solid #c7b4ed}
-.stark{background:#19152c;color:white;border:2px solid #51416f}
-.stark b{color:#a77aff}.stark i{color:#ff9b36;font-style:normal}
-.valor{background:#e8f8f4;color:#087d68;border:2px solid #8bd6c4}
-.topx{background:#fff0f2;color:#d12b4c;border:2px solid #f4a3b3}
-.card h3{font-size:18px;margin:10px 0 16px}
-.btn{display:block;width:100%;max-width:190px;margin:auto;background:#1767d2;color:white;text-decoration:none;padding:13px 8px;border-radius:9px;font-weight:bold;font-size:15px}
-.btn:hover{background:#1052ae}
-.track{display:block;margin:25px 0;background:#e4efff;padding:20px;border-radius:13px;text-align:center;text-decoration:none;color:#14549c;font-weight:bold;font-size:18px}
-.info{background:white;padding:20px;border-radius:13px;margin:18px 0;line-height:1.7}
-footer{margin-top:35px;background:#102b50;color:#d5e2f2;text-align:center;padding:25px 12px;line-height:2;font-size:13px}
-footer a{color:#54d6b0;margin:0 8px}
-@media(max-width:700px){.games{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{padding:17px 9px}.hero h1{font-size:26px}}
-@media(max-width:360px){.games{grid-template-columns:1fr}}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f6fc;
+  color: #17243a;
+}
+
+header {
+  background: #102b50;
+  color: white;
+  padding: 18px 16px;
+}
+
+.nav {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.brand span {
+  color: #54d6b0;
+}
+
+.tagline {
+  color: #d5e2f2;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.hero {
+  max-width: 1100px;
+  margin: 25px auto;
+  padding: 40px 20px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #102b50, #1767d2);
+  color: white;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 31px;
+  margin-bottom: 14px;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: auto;
+  line-height: 1.7;
+  color: #e0ebff;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 17px;
+}
+
+.section-title {
+  font-size: 25px;
+  margin: 30px 0 9px;
+}
+
+.subtitle {
+  color: #718096;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.games {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.game-card {
+  background: white;
+  border: 1px solid #e0e7f0;
+  border-radius: 16px;
+  padding: 20px 14px;
+  text-align: center;
+  box-shadow: 0 5px 18px rgba(20,45,80,.05);
+  transition: .2s;
+}
+
+.game-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(20,45,80,.10);
+}
+
+.logo {
+  width: 100%;
+  height: 115px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  background: #f7f8fa;
+}
+
+.logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.game-card h3 {
+  font-size: 19px;
+  margin: 12px 0 18px;
+}
+
+.support-btn {
+  display: block;
+  width: 100%;
+  max-width: 190px;
+  margin: auto;
+  padding: 14px 8px;
+  background: #1767d2;
+  color: white;
+  text-decoration: none;
+  border-radius: 9px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.support-btn:hover {
+  background: #1052ae;
+}
+
+.track {
+  display: block;
+  margin: 28px 0;
+  padding: 21px 15px;
+  background: #e4efff;
+  color: #14549c;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 13px;
+}
+
+.info {
+  background: white;
+  padding: 22px;
+  margin: 18px 0;
+  border-radius: 13px;
+  line-height: 1.7;
+  border: 1px solid #e5eaf2;
+}
+
+.info h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+footer {
+  background: #102b50;
+  color: #d5e2f2;
+  text-align: center;
+  padding: 27px 15px;
+  margin-top: 35px;
+  font-size: 13px;
+  line-height: 2;
+}
+
+footer a {
+  color: #54d6b0;
+  text-decoration: none;
+  margin: 0 9px;
+}
+
+@media(max-width:700px) {
+  .games {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+  }
+
+  .game-card {
+    padding: 16px 9px;
+  }
+
+  .logo {
+    height: 100px;
+  }
+
+  .game-card h3 {
+    font-size: 17px;
+  }
+
+  .support-btn {
+    font-size: 14px;
+    padding: 13px 5px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .section-title {
+    font-size: 22px;
+  }
+}
+
+@media(max-width:360px) {
+  .games {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 </head>
+
 <body>
-<header><div class="nav">
-<div class="brand">Care24<span>.help</span></div>
-</div></header>
 
-<main>
+<header>
+  <div class="nav">
+    <div>
+      <div class="brand">Care24<span>.help</span></div>
+      <div class="tagline">Independent Customer Support Portal</div>
+    </div>
+  </div>
+</header>
+
 <section class="hero">
-<h1>How Can We Help You?</h1>
-<p>Select your platform below to submit a support request. You can use your ticket ID for a future status enquiry.</p>
+  <h1>How Can We Help You?</h1>
+  <p>
+    Select your platform below to submit a support request.
+    Register your enquiry and keep your ticket ID for future follow-up.
+  </p>
 </section>
 
-<h2>Select Your Platform</h2>
-<p class="sub">Choose a platform to continue to the support request form.</p>
+<main class="container">
 
-<div class="games">
-<div class="card">
-<div class="logo"><span class="crore">CRORE BET</span></div>
-<h3>Crore Bet</h3>
-<a class="btn" href="pages/request.html?game=Crore%20Bet">Get Support →</a>
-</div>
-<div class="card">
-<div class="logo"><span class="rabet">4RABET</span></div>
-<h3>4Rabet</h3>
-<a class="btn" href="pages/request.html?game=4Rabet">Get Support →</a>
-</div>
-<div class="card">
-<div class="logo"><span class="pari">PARIMATCH</span></div>
-<h3>Parimatch</h3>
-<a class="btn" href="pages/request.html?game=Parimatch">Get Support →</a>
-</div>
-<div class="card">
-<div class="logo"><span class="stark"><b>STARK</b> <i>BET</i></span></div>
-<h3>Stark Bet</h3>
-<a class="btn" href="pages/request.html?game=Stark%20Bet">Get Support →</a>
-</div>
-<div class="card">
-<div class="logo"><span class="valor">VALOR CASINO</span></div>
-<h3>Valor Casino</h3>
-<a class="btn" href="pages/request.html?game=Valor%20Casino">Get Support →</a>
-</div>
-<div class="card">
-<div class="logo"><span class="topx">TOPX</span></div>
-<h3>Topx</h3>
-<a class="btn" href="pages/request.html?game=Topx">Get Support →</a>
-</div>
-</div>
+  <h2 class="section-title">Select Your Platform</h2>
 
-<a class="track" href="track.html">Track Your Support Ticket →</a>
+  <p class="subtitle">
+    Choose a platform to continue to the support request form.
+  </p>
 
-<section class="info">
-<h3>Need Assistance?</h3>
-<p>Submit a support request and keep your Ticket ID safe for future enquiries.</p>
-</section>
+  <div class="games">
 
-<section class="info">
-<h3>Important Information</h3>
-<p>Care24.help is an independent support-request portal. It is not affiliated with or endorsed by the listed platforms unless explicitly authorized. Never share passwords, OTPs, PINs or complete bank details.</p>
-</section>
+    <div class="game-card">
+      <div class="logo">
+        <img src="assets/crore-bet.jpg" alt="Crore Bet Logo">
+      </div>
+      <h3>Crore Bet</h3>
+      <a class="support-btn" href="pages/request.html?game=Crore%20Bet">
+        Get Support →
+      </a>
+    </div>
+
+    <div class="game-card">
+      <div class="logo">
+        <img src="assets/4rabet.jpg" alt="4Rabet Logo">
+      </div>
+      <h3>4Rabet</h3>
+      <a class="support-btn" href="pages/request.html?game=4Rabet">
+        Get Support →
+      </a>
+    </div>
+
+    <div class="game-card">
+      <div class="logo">
+        <img src="assets/parimatch.jpg" alt="Parimatch Logo">
+      </div>
+      <h3>Parimatch</h3>
+      <a class="support-btn" href="pages/request.html?game=Parimatch">
+        Get Support →
+      </a>
+    </div>
+
+    <div class="game-card">
+      <div class="logo">
+        <img src="assets/stark-bet.jpg" alt="Stark Bet Logo">
+      </div>
+      <h3>Stark Bet</h3>
+      <a class="support-btn" href="pages/request.html?game=Stark%20Bet">
+        Get Support →
+      </a>
+    </div>
+
+    <div class="game-card">
+      <div class="logo">
+        <img src="assets/valor-casino.jpg" alt="Valor Casino Logo">
+      </div>
+      <h3>Valor Casino</h3>
+      <a class="support-btn" href="pages/request.html?game=Valor%20Casino">
+        Get Support →
+      </a>
+    </div>
+
+    <div class="game-card">
+      <div class="logo">
+        <img src="assets/topx.jpg" alt="Topx Logo">
+      </div>
+      <h3>Topx</h3>
+      <a class="support-btn" href="pages/request.html?game=Topx">
+        Get Support →
+      </a>
+    </div>
+
+  </div>
+
+  <a class="track" href="track.html">
+    Track Your Support Ticket →
+  </a>
+
+  <section class="info">
+    <h2>Need Assistance?</h2>
+    <p>
+      Submit a support request using the platform selection above.
+      Keep your Ticket ID safe for future enquiries.
+    </p>
+  </section>
+
+  <section class="info">
+    <h2>Important Information</h2>
+    <p>
+      Care24.help is an independent support-request portal.
+      It is not affiliated with or endorsed by the listed platforms
+      unless explicitly authorized.
+    </p>
+    <p>
+      Never share your password, OTP, PIN or complete bank details.
+    </p>
+  </section>
+
 </main>
 
 <footer>
-<div>© 2026 Care24.help</div>
-<div>Independent Support Request Portal</div>
-<a href="privacy.html">Privacy Policy</a>
-<a href="terms.html">Terms & Conditions</a>
+  <div>© 2026 Care24.help</div>
+  <div>Independent Support Request Portal</div>
+  <div>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms & Conditions</a>
+  </div>
 </footer>
+
 </body>
 </html>
