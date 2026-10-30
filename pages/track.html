@@ -7,39 +7,136 @@
 <title>Track Ticket | Care24</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;padding:20px;background:#f3f6fb;font-family:Arial,sans-serif;color:#172033}
-.card{max-width:430px;margin:55px auto;background:white;padding:25px;border-radius:16px;box-shadow:0 5px 25px #0001}
-h2{text-align:center}
-p{text-align:center;color:#64748b}
-input,button{width:100%;padding:14px;margin-top:15px;border-radius:9px;font-size:16px}
+body{
+ margin:0;padding:20px;
+ background:#f2f5fa;
+ font-family:Arial,sans-serif;color:#172033;
+}
+.card{
+ max-width:440px;margin:45px auto;
+ background:white;padding:25px;
+ border-radius:17px;
+ box-shadow:0 5px 25px #0001;
+}
+h2{text-align:center;margin-top:0}
+.sub{text-align:center;color:#64748b;font-size:14px}
+.demo{
+ background:#fff7df;color:#805600;
+ padding:11px;border-radius:8px;
+ text-align:center;font-size:12px;
+ margin:18px 0;
+}
+input,button{
+ width:100%;padding:14px;
+ margin-top:13px;border-radius:9px;
+ font-size:16px;
+}
 input{border:1px solid #ccd3df}
-button{border:0;background:#1746a2;color:white;font-weight:bold;cursor:pointer}
-#result{margin-top:20px;text-align:center}
+button{
+ border:0;background:#1746a2;
+ color:white;font-weight:bold;cursor:pointer;
+}
+#result{display:none;margin-top:22px}
+.status{
+ padding:14px;border-radius:10px;
+ text-align:center;font-weight:bold;
+}
+.pending{background:#fff3d6;color:#956000}
+.progress{background:#e3efff;color:#1755a5}
+.resolved{background:#e1f7e9;color:#16713b}
+.timeline{margin-top:20px}
+.step{
+ padding:12px;margin:9px 0;
+ border:1px solid #e3e7ef;border-radius:9px;
+ color:#8a93a3;
+}
+.active{border-color:#1746a2;color:#1746a2;font-weight:bold}
+.small{text-align:center;color:#8791a2;font-size:12px}
 </style>
 </head>
 <body>
 <div class="card">
 <h2>Track Your Ticket</h2>
-<p>Enter your Ticket ID and registered email.</p>
-<input id="ticket" placeholder="CARE-45A72E92">
-<input id="email" type="email" placeholder="Registered Email">
-<button onclick="trackTicket()">Track Ticket</button>
-<div id="result"></div>
+<p class="sub">Enter your ticket ID to view the demo status.</p>
+
+<div class="demo">
+DEMO SIMULATION — This is not a real ticket update.
 </div>
+
+<input id="ticket" placeholder="Example: CARE-45A72E92">
+<button onclick="trackTicket()">Track Ticket</button>
+
+<div id="result">
+ <p><b id="ticketNumber"></b></p>
+ <div id="status" class="status"></div>
+ <div class="timeline">
+  <div id="step1" class="step">● Pending — First 5 minutes</div>
+  <div id="step2" class="step">● In Progress — Next 5 minutes</div>
+  <div id="step3" class="step">● Resolved — After 10 minutes</div>
+ </div>
+ <p class="small" id="timer"></p>
+</div>
+</div>
+
 <script>
-async function trackTicket(){
- const ticket=document.getElementById("ticket").value.trim();
- const email=document.getElementById("email").value.trim();
- const result=document.getElementById("result");
- if(!ticket||!email){
-   result.textContent="Please enter Ticket ID and email.";
-   return;
+let interval;
+
+function trackTicket(){
+ const id=document.getElementById("ticket").value.trim().toUpperCase();
+ if(!id){
+  alert("Please enter Ticket ID");
+  return;
  }
- result.textContent="Checking ticket...";
- // Tracking API will be connected in the next step.
- result.textContent="Tracking service is not connected yet. Please try again later.";
+ if(!/^CARE-[A-Z0-9]+$/.test(id)){
+  alert("Please enter a valid demo Ticket ID.");
+  return;
+ }
+
+ document.getElementById("ticketNumber").textContent="Ticket: "+id;
+ document.getElementById("result").style.display="block";
+
+ const key="care24_demo_"+id;
+ let started=localStorage.getItem(key);
+
+ if(!started){
+  started=Date.now();
+  localStorage.setItem(key,started);
+ }
+
+ clearInterval(interval);
+ updateStatus(Number(started));
+ interval=setInterval(()=>updateStatus(Number(started)),1000);
+}
+
+function updateStatus(started){
+ const elapsed=Math.floor((Date.now()-started)/1000);
+ const status=document.getElementById("status");
+
+ ["step1","step2","step3"].forEach(id=>{
+  document.getElementById(id).classList.remove("active");
+ });
+
+ if(elapsed<300){
+  status.textContent="PENDING";
+  status.className="status pending";
+  document.getElementById("step1").classList.add("active");
+ }else if(elapsed<600){
+  status.textContent="IN PROGRESS";
+  status.className="status progress";
+  document.getElementById("step2").classList.add("active");
+ }else{
+  status.textContent="RESOLVED (DEMO)";
+  status.className="status resolved";
+  document.getElementById("step3").classList.add("active");
+ }
+
+ const remaining=elapsed<300?300-elapsed:
+                 elapsed<600?600-elapsed:0;
+
+ document.getElementById("timer").textContent=
+ remaining>0?"Next demo status in "+Math.floor(remaining/60)+
+ "m "+(remaining%60)+"s":"Demo timeline completed.";
 }
 </script>
 </body>
 </html>
-
