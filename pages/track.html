@@ -1,1 +1,45 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track Ticket | Care24</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:20px;background:#f3f6fb;font-family:Arial,sans-serif;color:#172033}
+.card{max-width:430px;margin:55px auto;background:white;padding:25px;border-radius:16px;box-shadow:0 5px 25px #0001}
+h2{text-align:center}
+p{text-align:center;color:#64748b}
+input,button{width:100%;padding:14px;margin-top:15px;border-radius:9px;font-size:16px}
+input{border:1px solid #ccd3df}
+button{border:0;background:#1746a2;color:white;font-weight:bold;cursor:pointer}
+#result{margin-top:20px;text-align:center}
+</style>
+</head>
+<body>
+<div class="card">
+<h2>Track Your Ticket</h2>
+<p>Enter your Ticket ID and registered email.</p>
+<input id="ticket" placeholder="CARE-45A72E92">
+<input id="email" type="email" placeholder="Registered Email">
+<button onclick="trackTicket()">Track Ticket</button>
+<div id="result"></div>
+</div>
+<script>
+async function trackTicket(){
+ const ticket=document.getElementById("ticket").value.trim();
+ const email=document.getElementById("email").value.trim();
+ const result=document.getElementById("result");
+ if(!ticket||!email){
+   result.textContent="Please enter Ticket ID and email.";
+   return;
+ }
+ result.textContent="Checking ticket...";
+ // Tracking API will be connected in the next step.
+ result.textContent="Tracking service is not connected yet. Please try again later.";
+}
+</script>
+</body>
+</html>
+
